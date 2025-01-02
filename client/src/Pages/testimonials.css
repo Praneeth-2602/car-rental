@@ -1,0 +1,183 @@
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin: 2rem 0;
+    color: #2c3e50;
+}
+
+.carousel-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.carousel-card {
+    perspective: 1000px;
+    margin: 1rem;
+}
+
+.card {
+    width: 250px;
+    height: 300px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    position: relative;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    padding: 1rem;
+}
+
+.card-front {
+    background-color: #ffffff;
+}
+
+.card-front img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 4px solid #fc7703;
+    margin-bottom: 1rem;
+}
+
+.card-front h3 {
+    font-size: 1.2rem;
+    color: #2c3e50;
+    margin: 0.5rem 0;
+}
+
+.card-front p {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+}
+
+.card-front .rating {
+    color: #f39c12;
+}
+
+.card-back {
+    background-color: #fc7703;
+    color: white;
+    transform: rotateY(180deg);
+    text-align: center;
+}
+
+.card-back p {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.slick-dots li button:before {
+    color: #2980b9;
+}
+
+.slick-dots li.slick-active button:before {
+    color: #fc7703;
+}
+
+@media screen and (max-width: 768px) {
+    .card {
+        width: 200px;
+        height: 250px;
+    }
+
+    .card-front img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .card-front h3 {
+        font-size: 1rem;
+    }
+
+    .card-front p {
+        font-size: 0.8rem;
+    }
+
+    .card-back p {
+        font-size: 0.9rem;
+    }
+}
+
+.slick-prev,
+.slick-next {
+    font-size: 1.8rem;
+    color: #fc7703;
+    /* Blue color matching the theme */
+    z-index: 10;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border: 2px solid #fc7703;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    opacity: 1 !important;
+    /* Ensure visibility */
+}
+
+/* Positioning adjustments */
+.slick-prev {
+    left: -50px;
+}
+
+.slick-next {
+    right: -50px;
+}
+
+/* Ensure proper alignment on smaller screens */
+@media screen and (max-width: 768px) {
+    .slick-prev {
+        left: -30px;
+    }
+
+    .slick-next {
+        right: -30px;
+    }
+
+    .slick-prev,
+    .slick-next {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+.slick-prev,
+.slick-next {
+    z-index: 10;
+    transition: all 0.3s ease-in-out;
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+    background-color: white;
+    color: #fc7703;
+}
