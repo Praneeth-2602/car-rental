@@ -1,22 +1,25 @@
 import React from "react";
 import "./about.css";
+import Content from "../components/Card/Content";
+import Card from "../components/Card/Card";
 
 const About = () => {
   return (
     <div className="about-container">
       <h1 className="about-title">About Us</h1>
       <p className="about-text">
-        Welcome to the Car Rental project! This application allows users to rent cars 
-        easily and efficiently. It provides a user-friendly interface for both customers 
-        and administrators to manage car rentals.
+        Welcome to the Car Rental project! This application allows users to rent
+        cars easily and efficiently. It provides a user-friendly interface for
+        both customers and administrators to manage car rentals.
       </p>
 
       <section className="about-section">
         <h2 className="section-title">Our Mission</h2>
         <p className="section-text">
-          Our mission is to simplify car rentals for everyone. Whether you're a customer 
-          looking for a reliable car or an administrator managing rental operations, our 
-          platform is designed to make the process seamless and stress-free.
+          Our mission is to simplify car rentals for everyone. Whether you're a
+          customer looking for a reliable car or an administrator managing
+          rental operations, our platform is designed to make the process
+          seamless and stress-free.
         </p>
       </section>
 
@@ -33,15 +36,14 @@ const About = () => {
       <section className="about-section">
         <h2 className="section-title">Key Features</h2>
         <p className="section-text">
-          Our application is packed with features to ensure a smooth car rental experience:
+          Our application is packed with features to ensure a smooth car rental
+          experience:
         </p>
-        <ul className="about-list">
-          <li>Real-time availability of cars</li>
-          <li>Flexible rental durations</li>
-          <li>Integrated payment gateway for convenience</li>
-          <li>Admin dashboards with insightful analytics</li>
-          <li>Comprehensive customer support</li>
-        </ul>
+        <div className="card-container">
+          {Content.map((card) => (
+            <Card key={card.id} title={card.title} />
+          ))}
+        </div>
       </section>
     </div>
   );
