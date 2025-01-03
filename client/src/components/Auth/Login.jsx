@@ -15,7 +15,6 @@ const Login = () => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log("User is logged in:", user); // Log the user object if logged in
         navigate("/"); // Redirect to /home if logged in
       } else {
         console.log("User is not logged in."); // Log when there is no user
@@ -29,10 +28,10 @@ const Login = () => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, formData.email, formData.password);
-      alert("Login successful!");
+      navigate("/"); // Redirect to home on successful login
     } catch (error) {
       console.error("Login error:", error);
-      setError(error.message);
+      setError("Failed to login. Please check your email and password.");
     }
   };
 
@@ -41,10 +40,10 @@ const Login = () => {
     const provider = new GoogleAuthProvider();
     try {
       await signInWithPopup(auth, provider);
-      alert("Login with Google successful!");
+      navigate("/"); // Redirect to home on successful login
     } catch (error) {
       console.error("Google login error:", error);
-      setError(error.message);
+      setError("Failed to login with Google. Please try again.");
     }
   };
 

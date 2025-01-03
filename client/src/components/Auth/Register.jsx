@@ -17,21 +17,18 @@ const Register = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  // Listen to auth state changes
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log("User is logged in:", user); // Log the user object if logged in
-        navigate("/"); // Redirect to /home if logged in
+        console.log("User is logged in:", user);
+        navigate("/");
       } else {
-        console.log("User is not logged in."); // Log when there is no user
+        console.log("User is not logged in.");
       }
     });
-    return () => unsubscribe(); // Cleanup on unmount
+    return () => unsubscribe();
   }, [navigate]);
-  
 
-  // Google Sign-In Handler
   const handleGoogleSignIn = async () => {
     const provider = new GoogleAuthProvider();
     try {
@@ -44,7 +41,6 @@ const Register = () => {
     }
   };
 
-  // Email/Password Registration Handler
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
@@ -66,37 +62,38 @@ const Register = () => {
     }
   };
 
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   return (
     <div style={styles.container}>
       <h1>Register</h1>
       <form onSubmit={handleSubmit} style={styles.form}>
         <input
           type="email"
+          name="email"
           value={formData.email}
           placeholder="Enter email"
-          onChange={(e) =>
-            setFormData({ ...formData, email: e.target.value })
-          }
+          onChange={handleChange}
           required
           style={styles.input}
         />
         <input
           type="password"
+          name="password"
           value={formData.password}
           placeholder="Enter password"
-          onChange={(e) =>
-            setFormData({ ...formData, password: e.target.value })
-          }
+          onChange={handleChange}
           required
           style={styles.input}
         />
         <input
           type="password"
+          name="confirmPassword"
           value={formData.confirmPassword}
           placeholder="Confirm password"
-          onChange={(e) =>
-            setFormData({ ...formData, confirmPassword: e.target.value })
-          }
+          onChange={handleChange}
           required
           style={styles.input}
         />

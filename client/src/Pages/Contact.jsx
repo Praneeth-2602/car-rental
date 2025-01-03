@@ -1,41 +1,41 @@
-import React, { useState } from 'react';
-import './Contact.css';
+import React, { useState } from "react";
+import "./Contact.css";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    console.log("Form submitted:", formData);
   };
 
   const contactInfo = [
     {
       icon: "📞",
       title: "Phone",
-      details: ["+1 (555) 123-4567", "+1 (555) 765-4321"]
+      details: ["+1 (555) 123-4567", "+1 (555) 765-4321"],
     },
     {
       icon: "✉️",
       title: "Email",
-      details: ["info@carrental.com", "support@carrental.com"]
+      details: ["info@carrental.com", "support@carrental.com"],
     },
     {
       icon: "📍",
       title: "Location",
-      details: ["123 Car Street", "New York, NY 10001"]
+      details: ["123 Car Street", "New York, NY 10001"],
     },
     {
       icon: "🕒",
@@ -43,9 +43,9 @@ const Contact = () => {
       details: [
         "Monday - Friday: 9:00 AM - 6:00 PM",
         "Saturday: 10:00 AM - 4:00 PM",
-        "Sunday: Closed"
-      ]
-    }
+        "Sunday: Closed",
+      ],
+    },
   ];
 
   return (
@@ -82,7 +82,7 @@ const Contact = () => {
         <div className="contact-form-section">
           <div className="form-container">
             <h2>Send Us a Message</h2>
-            <form onSubmit={handleSubmit}>
+            <form className="form" onSubmit={handleSubmit}>
               <div className="form-group">
                 <label htmlFor="name">Full Name</label>
                 <input
